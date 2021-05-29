@@ -1,12 +1,9 @@
-from setuptools import find_packages, setup
+"""
+    helloflask
+"""
 
-setup(
-    name="flaskr",
-    version="1.0.0",
-    packages=find_packages(),
-    include_package_data=True,
-    zip_safe=False,
-    install_requires=[
-        "flask",
-    ],
-)
+__author__ = "Alexander Ryzhov"
+__email__ = "thed4rkof@gmail.com"
+__version__ = "0.1.0-proto.1"
+
+# here setup, manage and run operations will be defined
