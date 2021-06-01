@@ -10,11 +10,12 @@ To launch on Linux:
 ```
 
 To launch on Windows:
+cmd:
 ```cmd
     > set FLASK_APP=core
     > flask run
 ```
-
+powershell:
 ```powershell
     > $env:FLASK_APP = "core"
     > flask run
