@@ -10,6 +10,7 @@ To launch on Linux:
 ```
 
 To launch on Windows:
+
 cmd:
 ```cmd
     > set FLASK_APP=core
