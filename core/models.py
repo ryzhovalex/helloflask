@@ -1,7 +1,8 @@
 """ 
 Database models logic.
 """
-from . import db
+
+from .model_aliases import *
 
 
 # CONSTRAINT EXAMPLE: https://www.youtube.com/watch?v=lnfrcHdE_HI
@@ -9,16 +10,16 @@ from . import db
 
 # source: https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
 # many-to-many table
-user_addresses_table = db.Table("user_addresses", 
-    db.Column("address_id", db.Integer, db.ForeignKey("address.id"), primary_key=True),
-    db.Column("user_id", db.Integer, db.ForeignKey("user.id"), primary_key=True)
+user_addresses_table = table("user_addresses", 
+    column("address_id", integer(), foreign_key("address.id"), primary_key=True),
+    column("user_id", integer(), foreign_key("user.id"), primary_key=True)
 )
 
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
-    age = db.Column(db.Integer, nullable=False)
+class User(model()):
+    id = column(integer(), primary_key=True)
+    name = column(string(80), unique=True, nullable=False)
+    age = column(integer(), nullable=False)
 
     # one-to-one connection, because 'uselist=False'
     account = db.relationship("Account", backref="user", lazy=True, uselist=False)
@@ -28,28 +29,28 @@ class User(db.Model):
     order = db.relationship("Order", backref="user", lazy=True)
 
     # many-to-many connection
-    addresses = db.relationship("Address", secondary=user_addresses_table, lazy="subquery", backref=db.backref("users_residents", lazy=True))
+    addresses = db.relationship("Address", secondary=user_addresses_table, lazy="subquery", backref=backref("users_residents", lazy=True))
     # 'secondary' is a pointer to a table with Users and their Addresses
 
     def __repr__(self):
         return "<User %r>" % self.name
 
 
-class Account(db.Model):
+class Account(model()):
     """ One-to-one with User """
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) # chain Account to owner-user by defining foreign key with User id
-    nickname = db.Column(db.String(80), nullable=False)
+    id = column(integer(), primary_key=True)
+    user_id = column(integer(), foreign_key("user.id"), nullable=False) # chain Account to owner-user by defining foreign key with User id
+    nickname = column(string(80), nullable=False)
 
 
-class Order(db.Model):
+class Order(model()):
     """ One-to-many with User (1 user => many orders) """
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) 
-    name = db.Column(db.String(80), nullable=False)
+    id = column(integer(), primary_key=True)
+    user_id = column(integer(), foreign_key("user.id"), nullable=False) 
+    name = column(string(80), nullable=False)
 
 
-class Address(db.Model):
+class Address(model()):
     """ Many-to-many with User """
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
+    id = column(integer(), primary_key=True)
+    name = column(string(80), nullable=False)
