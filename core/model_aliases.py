@@ -15,6 +15,10 @@ def integer(*args, **kwargs):
     return db.Integer(*args, **kwargs)
 
 
+def boolean(*args, **kwargs):
+    return db.Boolean(*args, **kwargs)
+
+
 def string(*args, **kwargs):
     return db.String(*args, **kwargs)
 
@@ -33,3 +37,7 @@ def backref(*args, **kwargs):
 
 def table(*args, **kwargs):
     return db.Table(*args, **kwargs)
+
+
+def check_constraint(*args, **kwargs):
+    return db.CheckConstraint(*args, **kwargs)

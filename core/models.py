@@ -17,6 +17,11 @@ user_addresses_table = table("user_addresses",
 
 
 class User(model()):
+    # check constraint 'age'
+    __table_args__ = (
+        check_constraint("age >= 18 AND age <= 80"),
+    )
+
     id = column(integer(), primary_key=True)
     name = column(string(80), unique=True, nullable=False)
     age = column(integer(), nullable=False)
@@ -48,6 +53,7 @@ class Order(model()):
     id = column(integer(), primary_key=True)
     user_id = column(integer(), foreign_key("user.id"), nullable=False) 
     name = column(string(80), nullable=False)
+    delivered = column(boolean(), default=False)
 
 
 class Address(model()):
