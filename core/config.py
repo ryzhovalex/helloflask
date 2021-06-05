@@ -19,6 +19,10 @@ class Config:
 class ProductionConfig(Config):
     DEBUG = False
 
+    # postgresql connection works for connection to local psql (tested on UNIX system)
+    # source: https://stackoverflow.com/questions/23839656/sqlalchemy-no-password-supplied-error
+    SQLALCHEMY_DATABASE_URI = "postgresql:///enterleague-db" 
+
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
