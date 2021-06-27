@@ -2,7 +2,7 @@
 Database models logic.
 """
 
-from .model_aliases import *
+from .tools.model_aliases import *
 
 
 # CONSTRAINT EXAMPLE: https://www.youtube.com/watch?v=lnfrcHdE_HI
