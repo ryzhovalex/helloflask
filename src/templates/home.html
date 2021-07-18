@@ -3,14 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <ul>
-        {% for user in users %}
-            <li>{{ user.name }} -- {{ user.age }}</li>
-            {% if not loop.last %}
-                <hr>
-            {% endif %}
-        {% endfor %}
-    </ul>
+<div class="top"></div>
+<div class="middle-top"></div>
+<div class="middle-bot"></div>
+<div class="bot">{% include "turbo.html" %}</div>
 {% endblock %}
 
        

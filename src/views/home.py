@@ -1,13 +1,14 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, render_template, request, session, url_for
 )
-from ..models import orm
 
 
 bp = Blueprint("home", __name__, url_prefix="/")
 
 
 @bp.route("/")
-def home():
-    users = orm.User.query.all()
-    return render_template("home.html", users=users)
+def operation():
+    return render_template("home.html")
+
+
+

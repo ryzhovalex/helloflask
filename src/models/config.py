@@ -6,9 +6,6 @@ source2: https://flask.palletsprojects.com/en/2.0.x/config/
 import os
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-
 class Config:
     DEBUG = False
     TESTING = False
