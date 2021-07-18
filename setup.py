@@ -2,7 +2,7 @@
 
 __author__ = "Alexander Ryzhov"
 __email__ = "thed4rkof@gmail.com"
-__version__ = "0.3.0-pre-alpha.1"
+__version__ = "0.4.0-alpha.1"
 
 import os
 import sys
