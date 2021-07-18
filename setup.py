@@ -15,10 +15,17 @@ APP_NAME = "HelloFlask"
 
 def invoke_flask_init() -> None:
     os.system(f"{APP_NAME} (INFO) >>> Starting app initialization.")
-    os.system("python3 -m flask db init")
-    os.system("python3 -m flask db migrate")
-    os.system("python3 -m flask db upgrade")
+    migrate_db()
+    update_db()
     # TODO: here shell can return an error, so need to implement some error catching with subprocess module and redirect it to user in more convenient way
+
+
+def migrate_db() -> None:
+    os.system("python3 -m flask db migrate")
+
+
+def update_db() -> None:
+    os.system("python3 -m flask db update")
 
 
 def run_flask(mode: str) -> None:
@@ -48,6 +55,9 @@ def main() -> None:
         run_flask(args[0])
     elif args[0] == "init": # in dev init mode there is no need to setup static address
         invoke_flask_init()
+    elif args[0] == "upd" or args[0] == "update": # perform fast accept (migrate+update) of newly made changes to orm models
+        migrate_db()
+        update_db()
     else:
         raise WrongSetupModeError("Unexpected mode: " + args[0])
 

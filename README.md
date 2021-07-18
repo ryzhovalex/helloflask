@@ -2,29 +2,31 @@
 
 Flask template to start developing.
 
-To launch on Linux:
+## To launch on Linux:
+- for the first time:
 ```bash
-    $ cd <this_project_directory>
-    $ export FLASK_APP=core
-    $ flask run
+    git clone https://github.com/ryzhovalex/helloflask 
+    cd <this_project_directory>
+    python3 setup.py init 
+    python3 setup.py 
 ```
 
-To launch on Windows:
-
-cmd:
-```cmd
-    > set FLASK_APP=core
-    > flask run
+- for the next times
 ```
-powershell:
-```powershell
-    > $env:FLASK_APP = "core"
-    > flask run
+    python3 setup.py
 ```
 
-**Important:** If you are launching for the first time, before running 'flask run' and after setting 'FLASK_APP', you should create a database, by typing following commands (same for both Windows and Linux):
-```bash
-    $ flask db init
-    $ flask db migrate
-    $ flask db upgrade
+- to launch on production server (ALPHA: setup just dummy localhost 0.0.0.0:5000 now)
 ```
+    python3 setup.py prod
+```
+
+- if you made any changes to ORM
+```
+    python3 setup.py upd
+    python3 setup.py
+```
+
+## To launch on Windows:
+
+*...who cares about Windows?*
