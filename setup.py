@@ -14,7 +14,7 @@ APP_NAME = "HelloFlask"
 
 
 def invoke_flask_init() -> None:
-    os.system(f"{APP_NAME} (INFO) >>> Starting app initialization.")
+    os.system(f"echo {APP_NAME} (INFO) >>> Starting app initialization.")
     migrate_db()
     update_db()
     # TODO: here shell can return an error, so need to implement some error catching with subprocess module and redirect it to user in more convenient way
@@ -31,10 +31,10 @@ def update_db() -> None:
 def run_flask(mode: str) -> None:
     """ Runs Flask app by sending system command depending on given mode. """
     if mode == "dev":
-        os.system(f"{APP_NAME} (INFO) >>> Starting development server.")
+        os.system(f"echo {APP_NAME} (INFO) >>> Starting development server.")
         os.system("python3 -m flask run")
     elif mode == "prod":
-        os.system(f"{APP_NAME} (INFO) >>> Starting production server.")
+        os.system(f"echo {APP_NAME} (INFO) >>> Starting production server.")
         os.system("python3 -m flask run --host=0.0.0.0 --port=5000")
 
 
