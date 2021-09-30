@@ -1,5 +1,7 @@
 # helloflask
 
+DEPRECATED: Some things and ideas from this repository have migrated to [Omen](https://github.com/ryzhovalex/omen).
+
 Flask template to start developing.
 
 ## To launch on Linux:
